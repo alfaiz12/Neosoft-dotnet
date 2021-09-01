@@ -36,10 +36,23 @@ namespace PetStore
              UpdatCatName(conString, id, name);
              GetCats(conString);*/
 
+<<<<<<< HEAD
             // delete by cat name 
             Console.WriteLine("Enter Cat name which you want to delete");
             string name = Console.ReadLine();
             deleteCatName(conString, name);
+=======
+            Console.Write("PLease enter the Id of the cat which you want to delete ");
+            int id = Int32.Parse(Console.ReadLine());
+            string s = @"Data Source=DESKTOP-NOPJF0S\SQLEXPRESS;Initial Catalog=petDB;Integrated Security=True";
+            DeleteCatId(s,id);
+
+            // delete by cat name 
+            Console.WriteLine("Enter Cat name which you want to delete");
+            string conn = "Server=tcp:nspdatabase.database.windows.net,1433;Initial Catalog=PetDb;Persist Security Info=False;User ID=nomaan;Password=Computers123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+            string name = Console.ReadLine();
+            deleteCatName(conn, name);
+>>>>>>> c1988fba90395bde79ef0dbd1f2b1502a2eea5ec
         }
 
         private static void DeleteCatByNameDisconnected(string conStr, string query, string name)
@@ -79,6 +92,15 @@ namespace PetStore
             SqlConnection connection;
             SqlCommand command;
             ConnectedArchitecture.deleteCatByName(conStr, out connection, out command, name);
+        }
+         
+        // delete cat by name
+        private static void deleteCatName(string conStr, string name)
+        {
+            SqlConnection connection;
+            SqlCommand command;
+            ConnectedArchitecture.deleteCatByName(conStr, out connection, out command, name);
+
         }
 
         private static void GetCatsDisconnected(string conStr, string query = "select Id, Name from Cats")

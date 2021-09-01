@@ -115,6 +115,7 @@ namespace PetDataADO
 
                         parameter = command.Parameters.Add("@name", SqlDbType.VarChar);
                         parameter.Value = name;
+<<<<<<< HEAD
 
                         connection.Open();
 
@@ -129,8 +130,21 @@ namespace PetDataADO
             }
         }
 
+=======
+>>>>>>> c1988fba90395bde79ef0dbd1f2b1502a2eea5ec
 
+                        connection.Open();
 
+                        int rowsAffected = command.ExecuteNonQuery();
+                        Console.WriteLine($"Cat name deleted, {rowsAffected} row(s) affected");
+                    }
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
 
     }
 }
