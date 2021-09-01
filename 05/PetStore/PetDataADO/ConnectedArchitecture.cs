@@ -9,14 +9,14 @@ namespace PetDataADO
     {
         public static void GetAllCats(string conString, string query, out SqlConnection connection, out SqlCommand command, out SqlDataReader reader)
         {
-            using (connection=new SqlConnection(conString)) // opens the connection with Sql database
+            using (connection = new SqlConnection(conString)) // opens the connection with Sql database
             {
                 try
                 {
                     connection.Open();
                     using (command = new SqlCommand(query, connection))
                     {
-                        reader=command.ExecuteReader();// this command will exceute the command and return the values
+                        reader = command.ExecuteReader();// this command will exceute the command and return the values
                         if (reader.HasRows)
                         {
                             while (reader.Read())
@@ -31,10 +31,11 @@ namespace PetDataADO
                     throw;
                     //log errors
                 }
-                finally {
+                finally
+                {
                     connection.Close();
                 }
-               
+
             }
         }
         public static void UpdateCatNameById(string conString, out SqlConnection connection, out SqlCommand command, int id, string name)
@@ -43,8 +44,8 @@ namespace PetDataADO
             using (connection = new SqlConnection(conString))
             {
                 try
-                {                    
-                    using (command=new SqlCommand(query,connection))
+                {
+                    using (command = new SqlCommand(query, connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -57,7 +58,7 @@ namespace PetDataADO
 
                         connection.Open();
 
-                        int rowsAffected=command.ExecuteNonQuery();
+                        int rowsAffected = command.ExecuteNonQuery();
                         Console.WriteLine($"Cat name updated, {rowsAffected} row(s) affected");
                     }
                 }
@@ -115,23 +116,7 @@ namespace PetDataADO
 
                         parameter = command.Parameters.Add("@name", SqlDbType.VarChar);
                         parameter.Value = name;
-<<<<<<< HEAD
 
-                        connection.Open();
-
-                        int rowsAffected = command.ExecuteNonQuery();
-                        Console.WriteLine($"Cat name deleted, {rowsAffected} row(s) affected");
-                    }
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-
-=======
->>>>>>> c1988fba90395bde79ef0dbd1f2b1502a2eea5ec
 
                         connection.Open();
 
@@ -148,3 +133,7 @@ namespace PetDataADO
 
     }
 }
+
+           
+              
+     

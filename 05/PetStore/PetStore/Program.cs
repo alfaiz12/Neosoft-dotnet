@@ -47,7 +47,6 @@ namespace PetStore
             string s = @"Data Source=DESKTOP-NOPJF0S\SQLEXPRESS;Initial Catalog=petDB;Integrated Security=True";
             DeleteCatId(s,id);
 
-         
 
         }
 
