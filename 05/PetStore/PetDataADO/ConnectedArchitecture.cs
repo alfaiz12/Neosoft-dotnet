@@ -98,6 +98,37 @@ namespace PetDataADO
             }
         }
 
+        // Delete by name
+        public static void deleteCatByName(string conString, out SqlConnection connection, out SqlCommand command, string name)
+        {
+            string query = "deleteCatByName";
+            using (connection = new SqlConnection(conString))
+            {
+                try
+                {
+                    using (command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter parameter;
+
+
+                        parameter = command.Parameters.Add("@name", SqlDbType.VarChar);
+                        parameter.Value = name;
+
+                        connection.Open();
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        Console.WriteLine($"Cat name deleted, {rowsAffected} row(s) affected");
+                    }
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
 
 
 

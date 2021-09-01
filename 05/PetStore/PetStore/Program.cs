@@ -35,6 +35,11 @@ namespace PetStore
              string name = Console.ReadLine();
              UpdatCatName(conString, id, name);
              GetCats(conString);*/
+
+            // delete by cat name 
+            Console.WriteLine("Enter Cat name which you want to delete");
+            string name = Console.ReadLine();
+            deleteCatName(conString, name);
         }
 
         private static void DeleteCatByNameDisconnected(string conStr, string query, string name)
@@ -68,6 +73,12 @@ namespace PetStore
             SqlCommand command;
             ConnectedArchitecture.UpdateCatNameById(conStr, out connection, out command, id, name);
 
+        }
+        private static void deleteCatName(string conStr, string name)
+        {
+            SqlConnection connection;
+            SqlCommand command;
+            ConnectedArchitecture.deleteCatByName(conStr, out connection, out command, name);
         }
 
         private static void GetCatsDisconnected(string conStr, string query = "select Id, Name from Cats")
