@@ -42,10 +42,7 @@ namespace PetStore
             string name = Console.ReadLine();
             deleteCatName(conString, name);
 
-            Console.Write("PLease enter the Id of the cat which you want to delete ");
-            int id = Int32.Parse(Console.ReadLine());
-            string s = @"Data Source=DESKTOP-NOPJF0S\SQLEXPRESS;Initial Catalog=petDB;Integrated Security=True";
-            DeleteCatId(s,id);
+         
 
 
         }
